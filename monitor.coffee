@@ -194,4 +194,3 @@ UserStatus = {
   isMonitoring: isMonitoring
   lastActivity: lastActivity
 }
-

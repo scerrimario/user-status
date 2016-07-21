@@ -25,7 +25,7 @@ statusEvents.on "connectionLogin", (advice) ->
       'status.online': true,
       'status.lastLogin': {
         date: advice.loginTime
-        ipAddr: advice.ipAddr
+        ipAddr: ""
         userAgent: advice.userAgent
       }
     }
@@ -118,7 +118,7 @@ onStartup = (selector = {}) ->
 addSession = (connection) ->
   UserConnections.upsert connection.id,
     $set: {
-      ipAddr: connection.clientAddress
+      ipAddr: ""
       userAgent: connection.httpHeaders['user-agent']
     }
   return
@@ -133,7 +133,7 @@ loginSession = (connection, date, userId) ->
   statusEvents.emit "connectionLogin",
     userId: userId
     connectionId: connection.id
-    ipAddr: connection.clientAddress
+    ipAddr: ""
     userAgent: connection.httpHeaders['user-agent']
     loginTime: date
   return
